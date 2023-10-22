@@ -24,6 +24,13 @@ class MainActivity : AppCompatActivity() {
             Log.d("Photo Picker", "No media selected")
         }
     }
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) { isSuccess ->
+        if (isSuccess) {
+            showImage()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +48,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startCamera() {
-        Toast.makeText(this, "Fitur ini belum tersedia", Toast.LENGTH_SHORT).show()
+        currentImageUri = getImageUri(this)
+        launcherIntentCamera.launch(currentImageUri)
     }
 
     private fun startCameraX() {
