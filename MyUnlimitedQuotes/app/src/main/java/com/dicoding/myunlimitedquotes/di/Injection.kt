@@ -7,8 +7,8 @@ import com.dicoding.myunlimitedquotes.network.ApiConfig
 
 object Injection {
     fun provideRepository(context: Context): QuoteRepository {
-        QuoteDatabase.getDatabase(context)
+        val database = QuoteDatabase.getDatabase(context)
         val apiService = ApiConfig.getApiService()
-        return QuoteRepository(apiService)
+        return QuoteRepository(database, apiService)
     }
 }
