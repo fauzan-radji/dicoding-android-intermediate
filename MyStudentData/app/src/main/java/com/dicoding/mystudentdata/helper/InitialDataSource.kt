@@ -50,5 +50,4 @@ object InitialDataSource {
             CourseStudentCrossRef(6, 4),
         )
     }
-
 }

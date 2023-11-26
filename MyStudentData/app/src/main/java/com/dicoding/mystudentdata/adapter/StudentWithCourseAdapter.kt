@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.mystudentdata.database.StudentWithCourses
+import com.dicoding.mystudentdata.database.StudentWithCourse
 import com.dicoding.mystudentdata.databinding.ItemStudentBinding
 
 class StudentWithCourseAdapter :
-    ListAdapter<StudentWithCourses, StudentWithCourseAdapter.WordViewHolder>(WordsComparator()) {
+    ListAdapter<StudentWithCourse, StudentWithCourseAdapter.WordViewHolder>(
+        WordsComparator()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         val binding = ItemStudentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,25 +25,25 @@ class StudentWithCourseAdapter :
 
     class WordViewHolder(private val binding: ItemStudentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: StudentWithCourses) {
+        fun bind(data: StudentWithCourse) {
             binding.tvItemUniversity.text = data.studentAndUniversity.university?.name
             binding.tvItemUniversity.visibility = View.VISIBLE
             binding.tvItemName.text = data.studentAndUniversity.student.name
             val arrayCourse = arrayListOf<String>()
-            data.courses.forEach { course ->
-                arrayCourse.add(course.name)
+            data.course.forEach {
+                arrayCourse.add(it.name)
             }
-            binding.tvItemCourse.text = arrayCourse.joinToString(", ")
+            binding.tvItemCourse.text = arrayCourse.joinToString(separator = ", ")
             binding.tvItemCourse.visibility = View.VISIBLE
         }
     }
 
-    class WordsComparator : DiffUtil.ItemCallback<StudentWithCourses>() {
-        override fun areItemsTheSame(oldItem: StudentWithCourses, newItem: StudentWithCourses): Boolean {
+    class WordsComparator : DiffUtil.ItemCallback<StudentWithCourse>() {
+        override fun areItemsTheSame(oldItem: StudentWithCourse, newItem: StudentWithCourse): Boolean {
             return oldItem === newItem
         }
 
-        override fun areContentsTheSame(oldItem: StudentWithCourses, newItem: StudentWithCourses): Boolean {
+        override fun areContentsTheSame(oldItem: StudentWithCourse, newItem: StudentWithCourse): Boolean {
             return oldItem.studentAndUniversity.student.name == newItem.studentAndUniversity.student.name
         }
     }

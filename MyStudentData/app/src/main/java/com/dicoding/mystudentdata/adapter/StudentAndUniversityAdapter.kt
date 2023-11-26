@@ -26,8 +26,7 @@ class StudentAndUniversityAdapter :
         fun bind(data: StudentAndUniversity) {
             binding.tvItemName.text = data.student.name
             binding.tvItemUniversity.text = data.university?.name
-            binding.tvItemUniversity.visibility = View.VISIBLE
-        }
+            binding.tvItemUniversity.visibility = View.VISIBLE        }
     }
 
     class WordsComparator : DiffUtil.ItemCallback<StudentAndUniversity>() {

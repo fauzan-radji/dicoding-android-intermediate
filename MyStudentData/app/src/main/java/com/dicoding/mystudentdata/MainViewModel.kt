@@ -3,27 +3,16 @@ package com.dicoding.mystudentdata
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import com.dicoding.mystudentdata.database.Student
 import com.dicoding.mystudentdata.database.StudentAndUniversity
-import com.dicoding.mystudentdata.database.StudentWithCourses
+import com.dicoding.mystudentdata.database.StudentWithCourse
 import com.dicoding.mystudentdata.database.UniversityAndStudent
-import kotlinx.coroutines.launch
 
 class MainViewModel(private val studentRepository: StudentRepository) : ViewModel() {
-
-    init {
-        insertAllData()
-    }
-
     fun getAllStudent(): LiveData<List<Student>> = studentRepository.getAllStudent()
     fun getAllStudentAndUniversity(): LiveData<List<StudentAndUniversity>> = studentRepository.getAllStudentAndUniversity()
     fun getAllUniversityAndStudent(): LiveData<List<UniversityAndStudent>> = studentRepository.getAllUniversityAndStudent()
-    fun getAllStudentWithCourses(): LiveData<List<StudentWithCourses>> = studentRepository.getAllStudentWithCourses()
-
-    private fun insertAllData() = viewModelScope.launch {
-        studentRepository.insertAllData()
-    }
+    fun getAllStudentWithCourse(): LiveData<List<StudentWithCourse>> = studentRepository.getAllStudentWithCourse()
 }
 
 class ViewModelFactory(private val repository: StudentRepository) : ViewModelProvider.Factory {
