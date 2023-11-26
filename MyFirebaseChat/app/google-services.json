@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "775914835320",
+    "firebase_url": "https://my-firebase-chat-5aeee-default-rtdb.firebaseio.com",
     "project_id": "my-firebase-chat-5aeee",
     "storage_bucket": "my-firebase-chat-5aeee.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "775914835320-uebepfa0jr1vemj6rbl0b26vjeeflgu6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.myfirebasechat",
+            "certificate_hash": "ad17578c215937d4650f862a621092f3757c746d"
+          }
+        },
         {
           "client_id": "775914835320-hndbhie3e24164avabjuqgrh3s2l8ded.apps.googleusercontent.com",
           "client_type": 3
